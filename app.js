@@ -5,11 +5,21 @@ const maxGuess = 10;
 // crete a random number called "target"
 const numTarget = getRandomIntInclusive(minGuess, maxGuess);
 
+let count = 0;
 while (true) {
     const result = guessOnce();
     alert(result);
+    count++;
+    if( result === "correct")
+    {
+        break;
+    }
+//     if(count === 2) {
+//         break;
+//     }
 
 }
+// guessOnce();
 
 function guessOnce() {
 
@@ -22,11 +32,13 @@ function guessOnce() {
         // inform user if guess is >, <, or = to target
         if(inputNum < numTarget) {
             return "lower"
+
         } else if (inputNum > numTarget) {
             return "greater"
         } else {
             // they are equal
-            return "correct"
+            return "correct";
+            
         }
 }
 
@@ -36,4 +48,4 @@ function getRandomIntInclusive(min, max) {
 //    const min = Math.ceil(min);
 //    const max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
-  }
+}
