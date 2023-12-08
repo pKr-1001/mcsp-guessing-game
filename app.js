@@ -10,8 +10,10 @@ while (true) {
     const result = guessOnce();
     alert(result);
     count++;
+    
     if( result === "correct")
     {
+        console.log("Correct! It only took you " + count + " gusses!");
         break;
     }
 //     if(count === 2) {
@@ -22,7 +24,7 @@ while (true) {
 // guessOnce();
 
 function guessOnce() {
-
+        let arr = [];
         // use prompt to get user input
         let input = prompt("Guess a number bewteen " + minGuess + " and " + maxGuess);
         console.log("The user gussed: " + input);
@@ -31,13 +33,14 @@ function guessOnce() {
         console.log("input as number " + inputNum);
         // inform user if guess is >, <, or = to target
         if(inputNum < numTarget) {
+            arr.push(input);
             return "lower"
-
         } else if (inputNum > numTarget) {
+            arr.push(input);
             return "greater"
         } else {
             // they are equal
-            return "correct";
+            return "correct"
             
         }
 }
