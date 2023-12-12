@@ -11,13 +11,15 @@ let nameInput = prompt("Enter your name")
 let arr = []; // records of previous answer
 
     function playAgain () {
-        if(prompt("Do you want to play another ?").toLowerCase() !== "no") {
+        if(prompt("Do you want to play another ? yes or no").toLowerCase() !== "no") {
             count = 0;
+            // if they want to play again, asking their name again.
             numTarget = getRandomIntInclusive(minGuess, maxGuess);
+            // if someone else want to play.
             nameInput = prompt("Enter your name");
             guessOnce(nameInput);
         } else {
-            console.log("thanks.");
+            alert("thanks.");
             names[nameInput] = count;
             playersRecord(nameInput, count);
     }
@@ -27,8 +29,7 @@ let arr = []; // records of previous answer
         console.log("existing names: ", names);
         }
 
-
-function guessOnce(nameInput) {
+    function guessOnce(nameInput) {
         let inputNum;
         // use prompt to get user input
         do {
@@ -45,12 +46,18 @@ function guessOnce(nameInput) {
         } 
     } while(inputNum !== numTarget)
             alert("Corect");
+            // if their name is on the object, check if they beat their previous score.
             if(names.hasOwnProperty(nameInput)) {
                 if(names[nameInput] > count) {
                     alert("previous was " + names[nameInput] + " and you beat your guesses by " + count);
+                } else {
+                    alert("That's correct " + nameInput + "! You did better in your last game by " + (name[nameInput]-count))
+                    names[nameInput] = count;
                 }
             } else {
-                names[nameInput] = count;
+                //record name and score.
+                    alert("That's correct " + nameInput + "! It only took you " + count);
+                    names[nameInput] = count;
             }
             playAgain(nameInput);
     }
